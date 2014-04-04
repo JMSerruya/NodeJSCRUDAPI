@@ -10,4 +10,7 @@
   "bugs": {
     "url": "https://github.com/JMSerruya/NodeJSCRUDAPI/issues"
   }
+  "engines": {
+    "node": "0.10.x"
+  }
 }
