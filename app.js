@@ -2,8 +2,9 @@ var express = require("express"),
     app     = express(),
     http    = require("http"),
     server  = http.createServer(app),
-    mongoose = require('mongoose');
-    
+    mongoose = require('mongoose'),
+    routes = require('./routes/tvshows')(app);
+
 app.configure(function () {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
