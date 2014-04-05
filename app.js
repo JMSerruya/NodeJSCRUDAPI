@@ -16,7 +16,11 @@ app.get('/', function(req, res) {
 
 routes = require('./routes/tvshows')(app);
 
-mongoose.connect('mongodb://localhost/tvshows', function(err, res) {
+var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/tvshows';
+
+mongoose.connect(mongoUri, function(err, res) {
 	if(err) {
 		console.log('ERROR: connecting to Database. ' + err);
 	} else {
@@ -24,6 +28,6 @@ mongoose.connect('mongodb://localhost/tvshows', function(err, res) {
 	}
 });
 
-server.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
+server.listen(process.env.PORT || 3000, function() {
+  console.log("Node server running");
 });
